@@ -1,4 +1,8 @@
+import java.util.Random;
+
 public class Solution {
+    private final Random random = new Random();
+
     public int[] sortArray(int[] nums) {
         quickSort(nums, 0, nums.length-1);
 
@@ -13,6 +17,13 @@ public class Solution {
         }
     }
 
+    private int randomizedPartition(int [] arr, int low, int high){
+        int pivot = low + random.nextInt(high - low + 1);
+        swap(arr, pivot, high);
+
+        return partition(arr, low, high);
+    }
+
     public int partition(int[] arr, int low, int high){
         int pivot = arr[high];
         int i = low-1;
@@ -20,15 +31,17 @@ public class Solution {
         for (int j = low; j < high; j++) {
             if(arr[j] <= pivot){
                 i++;
-                int aux = arr[i];
-                arr[i] = arr[j];
-                arr[j] = aux;
+                swap(arr, i, j);
             }
         }
-        int aux = arr[i+1];
-        arr[i+1] = arr[high];
-        arr[high] = aux;
+        swap(arr, i+1, high);
 
         return i+1;
+    }
+
+    public void swap(int arr[], int i, int j){
+        int aux = arr[i];
+        arr[i] = arr[j];
+        arr[j] = aux;
     }
 }
