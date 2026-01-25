@@ -9,34 +9,26 @@ public class Solution {
         return nums;
     }
 
-    public void quickSort(int[] nums, int low, int high){
-        if(low < high) {
-            int pi = partition(nums, low, high);
-            quickSort(nums, low, pi-1);
-            quickSort(nums, pi+1, high);
-        }
-    }
+    public void quickSort(int[] arr, int low, int high){
+        if (low >= high) return;
 
-    private int randomizedPartition(int [] arr, int low, int high){
-        int pivot = low + random.nextInt(high - low + 1);
-        swap(arr, pivot, high);
+        int pivotIndex = low + random.nextInt(high - low + 1);
+        int pivot = arr[pivotIndex];
 
-        return partition(arr, low, high);
-    }
+        int lt = low, i = low, gt = high;
 
-    public int partition(int[] arr, int low, int high){
-        int pivot = arr[high];
-        int i = low-1;
-
-        for (int j = low; j < high; j++) {
-            if(arr[j] <= pivot){
+        while (i <= gt) {
+            if(arr[i] < pivot) {
+                swap(arr, lt++, i++);
+            } else if (arr[i] > pivot) {
+                swap(arr, i, gt--);
+            }else{
                 i++;
-                swap(arr, i, j);
             }
         }
-        swap(arr, i+1, high);
 
-        return i+1;
+        quickSort(arr, low, lt-1);
+        quickSort(arr, gt+1, high);
     }
 
     public void swap(int arr[], int i, int j){
