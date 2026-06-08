@@ -1,0 +1,24 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+        int left = 0;
+        int right = s.length()-1;
+
+        while (left < right) {
+            char currLeft = s.charAt(left);
+            char currRight = s.charAt(right);
+
+            if(!Character.isLetterOrDigit(currLeft)){
+                left++;
+            } else if(!Character.isLetterOrDigit(currRight)) {
+                right--;
+            } else if(Character.toLowerCase(currLeft) == Character.toLowerCase(currRight)){
+                left++;
+                right--;
+            } else {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
