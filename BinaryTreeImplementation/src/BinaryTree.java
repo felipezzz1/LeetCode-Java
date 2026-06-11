@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class BinaryTree {
     TreeNode root;
@@ -86,5 +85,28 @@ public class BinaryTree {
             postorderTraversalRecursive(node.right, result);
             result.add(node.val);
         }
+    }
+
+    public boolean bfs(int data) {
+        if (root == null) return false;
+
+        Deque<TreeNode> queue = new ArrayDeque<>();
+        queue.addFirst(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.removeFirst();
+            System.out.println(node.val);
+            if(node.val == data) {
+                return true;
+            }
+            if(node.left != null) {
+                queue.add(node.left);
+            }
+            if(node.right != null){
+                queue.add(node.right);
+            }
+        }
+
+        return false;
     }
 }

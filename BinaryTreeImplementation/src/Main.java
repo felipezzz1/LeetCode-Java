@@ -2,7 +2,7 @@ public class Main {
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
 
-        int[] valuesToInsert = {5,3,1,10,15,7};
+        int[] valuesToInsert = {5,3,1,10,15,7,20};
 
         for (int val : valuesToInsert) {
             tree.insert(val);
@@ -16,5 +16,7 @@ public class Main {
         System.out.println("Preorder Traversal: " + tree.preorderTraversal());
         System.out.println("Inorder Traversal: " + tree.inorderTraversal());
         System.out.println("Postorder Traversal: " + tree.postorderTraversal());
+
+        System.out.println("BFS: " + tree.bfs(10));
     }
 }
