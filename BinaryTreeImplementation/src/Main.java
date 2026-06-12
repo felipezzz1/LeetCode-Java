@@ -17,6 +17,7 @@ public class Main {
         System.out.println("Inorder Traversal: " + tree.inorderTraversal());
         System.out.println("Postorder Traversal: " + tree.postorderTraversal());
 
+        System.out.println("DFS: " + tree.dfs(tree.root, 10));
         System.out.println("BFS: " + tree.bfs(10));
     }
 }

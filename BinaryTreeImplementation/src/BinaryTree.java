@@ -87,6 +87,32 @@ public class BinaryTree {
         }
     }
 
+    public boolean dfs(TreeNode root, int data) {
+        return dfs_recursive(root, data);
+    }
+
+    private boolean dfs_recursive(TreeNode node, int data) {
+        if(node == null) {
+            return false;
+        }
+
+        System.out.println(node.val);
+
+        if(node.val == data) {
+            return true;
+        }
+
+        if(dfs_recursive(node.left, data)) {
+            return true;
+        }
+
+        if(dfs_recursive(node.right, data)){
+            return true;
+        }
+
+        return false;
+    }
+
     public boolean bfs(int data) {
         if (root == null) return false;
 
