@@ -91,7 +91,7 @@ public class BinaryTree {
         if (root == null) return false;
 
         Deque<TreeNode> queue = new ArrayDeque<>();
-        queue.addFirst(root);
+        queue.add(root);
 
         while (!queue.isEmpty()) {
             TreeNode node = queue.removeFirst();
